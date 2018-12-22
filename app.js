@@ -6,7 +6,11 @@ const port = process.env.PORT || 3000;
 
 
 app.get('/', (req, res) => {
-    res.send('Hello Word');
+    // res.send('Hello Word');
+    res.json({
+        ok: true,
+        mensaje: 'todo bien en Heroku'
+    });
     console.log('todo bien');
 
 });
