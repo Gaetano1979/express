@@ -11,9 +11,9 @@ app.get('/', (req, res) => {
 });
 app.get('/clientes', (req, res) => {
     res.send('Bienvenidos a clientes');
-})
+});
 
 app.listen(3500, () => {
     console.log('Servidor corriendo');
 
-})
+});
