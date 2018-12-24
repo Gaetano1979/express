@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
+// const path = require('path');
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 const { MysqlClass } = require('./mysql/mysql');
+
+// app.use(path.resolve(express.static(path.join(__dirname, '../'))));
 let query = `
     select idcliente,cliente from clientes`;
 let query1 = `
@@ -19,7 +23,7 @@ let pro = `
 select clientes.idcliente,pagos.idcliente from pagos where idcliente=pagos.idcliente`;
 
 
-
+app.use(cors());
 
 
 app.get('/', (req, res) => {
