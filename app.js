@@ -61,7 +61,9 @@ app.get('/pagos/:id', (req, res) => {
                 data: resultado
             });
         }
-    })
+    });
+    MysqlClass.chiudere();
+
 })
 app.get('/ventas', (req, res) => {
     let query = `
@@ -77,6 +79,8 @@ app.get('/ventas', (req, res) => {
             });
         }
     });
+    MysqlClass.chiudere();
+
 });
 app.get('/ventas/:id', (req, res) => {
     // res.send('Bienvenidos a clientes');
@@ -94,6 +98,8 @@ app.get('/ventas/:id', (req, res) => {
             });
         }
     });
+    MysqlClass.chiudere();
+
 });
 
 app.listen(port, () => {
