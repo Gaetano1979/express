@@ -47,6 +47,22 @@ app.get('/pagos', (req, res) => {
     });
     MysqlClass.chiudere();
 });
+app.get('/pagos/:id', (req, res) => {
+    let id_cliente = req.params.id;
+    let query = `
+    select * from pagos where idcliente=${id_cliente}`;
+    MysqlClass.conessione();
+    MysqlClass.resultado(query, (err, resultado) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json({
+                ok: true,
+                data: resultado
+            });
+        }
+    })
+})
 app.get('/ventas', (req, res) => {
     let query = `
         select * from ventas`;
