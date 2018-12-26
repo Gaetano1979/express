@@ -7,26 +7,15 @@ const port = process.env.PORT || 3000;
 const { MysqlClass } = require('./mysql/mysql');
 
 // app.use(path.resolve(express.static(path.join(__dirname, '../'))));
-let query = `
-    select idcliente,cliente from clientes`;
-let query1 = `
-describe clientes`;
-let query2 = `
- SHOW TABLES;
-`;
-let pagos = `select * from pagos`;
-let rel = `
-SELECT clientes.cliente, pagos.idcliente FROM pagos JOIN pagos_clientes
-ON (clientes.idclientes = pagos_clientes.cliente) JOIN pagos
-ON (pagos.idpago = pagos_cliente.pagos)`;
-let pro = `
-select clientes.idcliente,pagos.idcliente from pagos where idcliente=pagos.idcliente`;
 
 
+// creamos el cors para el sito de heroku
 app.use(cors());
 
 
 app.get('/', (req, res) => {
+    let query = `
+    select * from clientes`;
     MysqlClass.conessione();
     MysqlClass.resultado(query, (err, data) => {
         if (err) {
@@ -43,37 +32,51 @@ app.get('/', (req, res) => {
     console.log('todo bien');
 });
 app.get('/pagos', (req, res) => {
+    let query = `
+    select * from pagos`;
     MysqlClass.conessione();
-    MysqlClass.resultado(pagos, (err, pagos) => {
+    MysqlClass.resultado(query, (err, pagos) => {
         if (err) {
             console.log(err);
         } else {
-            console.log(query);
-            console.log(res.json());
-
-            // res.json({
-            //     ok: true,
-            //     data: pagos
-            // });
+            res.json({
+                ok: true,
+                data: pagos
+            });
         }
     });
     MysqlClass.chiudere();
 });
-app.get('/clientes', (req, res) => {
-    // res.send('Bienvenidos a clientes');
-    MysqlClass.resultado(query, (err, resul) => {
+app.get('/ventas', (req, res) => {
+    let query = `
+        select * from ventas`;
+    MysqlClass.conessione();
+    MysqlClass.resultado(query, (err, resultado) => {
         if (err) {
             console.log(err);
-
+        } else {
+            res.json({
+                ok: true,
+                data: resultado
+            });
+        }
+    });
+});
+app.get('/ventas/:id', (req, res) => {
+    // res.send('Bienvenidos a clientes');
+    let id = req.params.id;
+    let ventas = `
+    select * from ventas where idcliente=${id}`;
+    MysqlClass.conessione();
+    MysqlClass.resultado(ventas, (err, resul) => {
+        if (err) {
+            console.log(err);
         } else {
             res.json({
                 ok: true,
                 data: resul
             });
-
-
         }
-
     });
 });
 
