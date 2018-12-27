@@ -3,7 +3,6 @@ const Mysql = require('mysql');
 let conessione;
 
 
-
 let MysqlClass = {
     hostClass: 'ls-4ced6077d7519bffb5de949e2bae2dcbe3615210.c5s20s1vsvjo.eu-central-1.rds.amazonaws.com',
     password: 'gaetano1979',
@@ -16,11 +15,10 @@ let MysqlClass = {
             user: MysqlClass.user,
             database: MysqlClass.database
         });
+
         conessione.connect((err) => {
             if (err) {
                 console.log(err);
-
-
             } else {
                 console.log('Conessione eseguita con successo');
             }
@@ -33,9 +31,8 @@ let MysqlClass = {
 
             } else {
                 console.log('Conessione Chiusa');
-
             }
-        })
+        });
     },
     resultado: (queryresultado, callback) => {
         let conessione = Mysql.createConnection({
@@ -58,9 +55,6 @@ let MysqlClass = {
                 return callback(null, resultado);
             }
         });
-
     }
-
-
 };
 module.exports = { MysqlClass };
