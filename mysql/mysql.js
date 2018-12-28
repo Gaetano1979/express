@@ -29,7 +29,7 @@ let MysqlClass = {
             } else {
                 console.log('Conessione chiusa');
             }
-        })
+        });
     },
     chiudere: () => {
         conessione.end((err) => {

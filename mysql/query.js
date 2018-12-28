@@ -15,10 +15,20 @@ let queryJoin = (idcliente) => {
     return resultado;
 };
 
+let querytotalPagos = (idfactura, pagos) => {
+    let resultado = `
+    select sum(${pagos}) from pagos where pagos.idfactura=${idfactura}`;
+    // console.log(resultado);
+    return resultado;
+
+
+};
+
 
 
 module.exports = {
     query,
     queryWhere,
-    queryJoin
+    queryJoin,
+    querytotalPagos
 };

@@ -115,9 +115,25 @@ app.get('/ventas/:id', (req, res) => {
             });
         }
     });
-    // MysqlClass.chiudere();
-
 });
+app.get('/totalpagos/:id', (req, res) => {
+    let id_par = req.params.id;
+    let pagamenti = 'pagos.cantidad';
+    let resultado = query.querytotalPagos(id_par, pagamenti);
+    console.log(resultado);
+    MysqlClass.resultado(resultado, (err, resul) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json({
+                ok: true,
+                data: resul
+            });
+        }
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log('Servidor corriendo');
