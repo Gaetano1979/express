@@ -1,6 +1,6 @@
 {
     "name": "prova_express",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "proviamo express",
     "main": "index.js",
     "scripts": {
