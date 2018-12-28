@@ -16,7 +16,7 @@ MysqlClass.conessione();
 
 
 app.get('/', (req, res) => {
-    MysqlClass.conessione();
+    // MysqlClass.conessione();
     let queryget = query.query('clientes');
     MysqlClass.resultado(queryget, (err, data) => {
         if (err) {
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     console.log('todo bien');
 });
 app.get('/pagos', (req, res) => {
-    MysqlClass.conessione();
+    // MysqlClass.conessione();
     let querypago = query.query('pagos');
     MysqlClass.resultado(querypago, (err, pagos) => {
         if (err) {
@@ -48,7 +48,7 @@ app.get('/pagos', (req, res) => {
 });
 
 app.get('/pagos/:id', (req, res) => {
-    MysqlClass.conessione();
+    // MysqlClass.conessione();
     let id_cliente = req.params.id;
     let query = `
     select * from pagos where idcliente=${id_cliente}`;
@@ -83,7 +83,7 @@ app.get('/pagosDos/:id', (req, res) => {
 });
 
 app.get('/ventas', (req, res) => {
-    MysqlClass.conessione();
+    // MysqlClass.conessione();
     let query = `
         select * from ventas`;
     MysqlClass.resultado(query, (err, resultado) => {
@@ -101,7 +101,7 @@ app.get('/ventas', (req, res) => {
 });
 app.get('/ventas/:id', (req, res) => {
     // res.send('Bienvenidos a clientes');
-    MysqlClass.conessione();
+    // MysqlClass.conessione();
     let id = req.params.id;
     let ventas = `
     select * from ventas where idcliente=${id}`;
