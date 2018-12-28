@@ -51,7 +51,9 @@ let MysqlClass = {
                 return callback('Registro no encontrado');
 
             } else {
-                console.log('resultati', resultado);
+                // console.log('resultati', resultado);
+                console.log('resultados enviados');
+
                 return callback(null, resultado);
             }
         });
