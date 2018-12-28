@@ -23,6 +23,13 @@ let MysqlClass = {
                 console.log('Conessione eseguita con successo');
             }
         });
+        conessione.end((err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Conessione chiusa');
+            }
+        })
     },
     chiudere: () => {
         conessione.end((err) => {
