@@ -40,10 +40,9 @@ app.get('/', (req, res) => {
 });
 app.get('/buscar', (req, res) => {
     let datos = req.body;
-    let tabla = datos.tabla;
-    let columna = datos.columna;
+    
     let termino = datos.termino;
-    let peticion = queryapp.querybuscar(tabla, columna, termino);
+    let peticion = queryapp.querybuscar('clientes', 'cliente', termino);
     // return peticion;
     mysql.conessionequery(peticion, (err, data) => {
         if (err) {
