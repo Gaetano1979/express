@@ -1,6 +1,13 @@
 let query = (tabla) => {
-    let resultado = `select * from ${tabla} limit 50 `;
+    let resultado = `select * from ${tabla} limit 0,10 `;
     return resultado;
+};
+
+let querybuscar = (tabla, columna, termino) => {
+    let resultado = `SELECT * FROM ${tabla} WHERE ${columna} LIKE '%${termino}%'`;
+    // return console.log(resultado);
+    return resultado;
+
 };
 
 let queryWhere = (tabla, indice, valorIndice) => {
@@ -30,5 +37,6 @@ module.exports = {
     query,
     queryWhere,
     queryJoin,
-    querytotalPagos
+    querytotalPagos,
+    querybuscar
 };
