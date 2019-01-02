@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
     console.log(mysql.stato());
 });
 app.get('/buscar', (req, res) => {
-    let datos = req.body;
+    let datos = req.headers;
     
     let termino = datos.termino;
     let peticion = queryapp.querybuscar('clientes', 'cliente', termino);
