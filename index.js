@@ -26,11 +26,12 @@ app.get('/', (req, res) => {
             });
         }
     });
-    mysql.conessionechiusa();
+    // mysql.conessionechiusa();
     console.log('todo bien');
     console.log(mysql.stato());
 });
 app.get('/pagos', (req, res) => {
+
     let pedir = queryapp.query('pagos');
     mysql.conessionequery(pedir, (err, data) => {
         if (err) {
@@ -42,7 +43,7 @@ app.get('/pagos', (req, res) => {
             });
         }
     });
-    mysql.conessionechiusa();
+    // mysql.conessionechiusa();
     console.log('todo bien');
     console.log(mysql.stato());
 });

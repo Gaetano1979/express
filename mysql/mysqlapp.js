@@ -12,12 +12,14 @@ let conessione = MYSQL.createConnection({
 let conessioneaperte = () => {
     conessione.connect((err) => {
         if (err) {
-            console.log(err);
+            return console.log(err);
         } else {
             console.log('Conessione eseguita con successo', conessione.config.database);
             console.log('Estado conesssione en conessioneaperta', conessione.state);
         }
     });
+
+    // conessionechiusa();
 
 
 };
@@ -34,7 +36,7 @@ let conessionechiusa = () => {
 };
 
 let stato = () => {
-    console.log('Estado de la conessione: ', conessione.state);
+    return console.log('Estado de la conessione: ', conessione.state);
 };
 
 let conessionequery = (query, callback) => {
