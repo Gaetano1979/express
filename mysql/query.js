@@ -27,9 +27,12 @@ let querytotalPagos = (idfactura, pagos) => {
     select sum(${pagos}) from pagos where pagos.idfactura=${idfactura}`;
     // console.log(resultado);
     return resultado;
-
-
 };
+
+let queryventas = (idcliente) => {
+    let resultado = `select * from ventas where ventas.idcliente=656`;
+    return resultado;
+}
 
 
 
@@ -38,5 +41,6 @@ module.exports = {
     queryWhere,
     queryJoin,
     querytotalPagos,
-    querybuscar
+    querybuscar,
+    queryventas
 };

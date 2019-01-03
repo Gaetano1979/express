@@ -38,9 +38,28 @@ app.get('/', (req, res) => {
     console.log('todo bien');
     console.log(mysql.stato());
 });
+
+app.get('/cliente/:id', (req, res) => {
+    let id_params = req.params.id;
+    let pedir = queryapp.queryventas(id_params);
+    mysql.conessionequery(pedir, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+    });
+    // mysql.conessionechiusa();
+    console.log('todo bien');
+    console.log(mysql.stato());
+});
+
 app.get('/buscar', (req, res) => {
     let datos = req.headers;
-    
+
     let termino = datos.termino;
     let peticion = queryapp.querybuscar('clientes', 'cliente', termino);
     // return peticion;
