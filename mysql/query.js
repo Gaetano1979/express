@@ -30,9 +30,9 @@ let querytotalPagos = (idfactura, pagos) => {
 };
 
 let queryventas = (idcliente) => {
-    let resultado = `select * from ventas where ventas.idcliente=656`;
+    let resultado = `select * from ventas where ventas.idcliente=${idcliente}`;
     return resultado;
-}
+};
 
 
 
