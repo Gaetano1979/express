@@ -1,11 +1,11 @@
 {
     "name": "prova_express",
-    "version": "1.1.0",
-    "description": "proviamo express",
+    "version": "1.2.0",
+    "description": "montiamo un servidor express con rutas ",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "start": "node server/server.js"
     },
     "author": "Gaetano",
     "license": "ISC",

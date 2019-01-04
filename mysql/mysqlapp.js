@@ -1,7 +1,5 @@
 const MYSQL = require('mysql');
 
-
-
 let conessione = MYSQL.createConnection({
     host: 'ls-4ced6077d7519bffb5de949e2bae2dcbe3615210.c5s20s1vsvjo.eu-central-1.rds.amazonaws.com',
     password: 'gaetano1979',
@@ -18,10 +16,6 @@ let conessioneaperte = () => {
             console.log('Estado conesssione en conessioneaperta', conessione.state);
         }
     });
-
-    // conessionechiusa();
-
-
 };
 
 let conessionechiusa = () => {
@@ -50,9 +44,7 @@ let conessionequery = (query, callback) => {
             return callback('Registro no encontrado');
 
         } else {
-            // console.log('resultati', resultado);
             console.log('resultados enviados');
-
             return callback(null, resultado);
         }
     });
