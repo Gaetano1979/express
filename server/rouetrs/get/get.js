@@ -49,6 +49,27 @@ app.get('/clientes', (req, res) => {
 });
 
 // =============================
+// ruta get todos los clientes por id
+// =============================
+app.get('/cliente/:id', (req, res) => {
+    let id_params = req.params.id;
+    let pedir = querys.queryventas(id_params);
+    mysql.conessionequery(pedir, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+    });
+    // mysql.conessionechiusa();
+    console.log('todo bien');
+    console.log(mysql.stato());
+});
+
+// =============================
 // ruta get todos los clientes
 // =============================
 app.get('/pagos', (req, res) => {
