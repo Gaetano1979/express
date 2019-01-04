@@ -1,5 +1,5 @@
 let query = (tabla) => {
-    let resultado = `select * from ${tabla} limit 0,10 `;
+    let resultado = `select * from ${tabla}`;
     return resultado;
 };
 
@@ -33,6 +33,8 @@ let queryventas = (idcliente) => {
     let resultado = `select * from ventas where ventas.idcliente=${idcliente}`;
     return resultado;
 };
+
+let querypagos
 
 
 
