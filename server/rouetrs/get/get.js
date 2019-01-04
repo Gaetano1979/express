@@ -49,6 +49,25 @@ app.get('/clientes', (req, res) => {
 });
 
 // =============================
+// ruta get todos los clientes
+// =============================
+app.get('/pagos', (req, res) => {
+    let pedir = querys.query('pagos');
+    mysql.conessionequery(pedir, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+    });
+    console.log('todo bien');
+    console.log(mysql.stato());
+});
+
+// =============================
 // ruta get para buscar un cliente
 // =============================
 app.get('/buscar', (req, res) => {
