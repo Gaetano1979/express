@@ -22,9 +22,9 @@ let queryJoin = (idcliente) => {
     return resultado;
 };
 
-let querytotalPagos = (idfactura, pagos) => {
+let querytotalPagos = (idfactura, columna) => {
     let resultado = `
-    select sum(${pagos}) from pagos where pagos.idfactura=${idfactura}`;
+    select sum(${columna}) from pagos where pagos.idfactura=${idfactura}`;
     // console.log(resultado);
     return resultado;
 };

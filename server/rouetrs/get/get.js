@@ -70,10 +70,13 @@ app.get('/cliente/:id', (req, res) => {
 });
 
 // =============================
-// ruta get todos los clientes
+// ruta get todos los pagos por factura
 // =============================
-app.get('/pagos', (req, res) => {
-    let pedir = querys.query('pagos');
+app.get('/pagos/:id', (req, res) => {
+    // let pedir = querys.query('pagos');
+    let id_par = req.params.id;
+    let columnapagos = 'cantidad';
+    let pedir = querys.querytotalPagos(id_par, cantidad);
     mysql.conessionequery(pedir, (err, data) => {
         if (err) {
             console.log(err);
