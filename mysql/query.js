@@ -30,7 +30,7 @@ let querytotalPagos = (idfactura, columna) => {
 };
 
 let queryventas = (idcliente) => {
-    let resultado = `select * from ventas where ventas.idcliente=${idcliente}`;
+    let resultado = `select * from ventas where ventas.idcliente=${idcliente} order by ventas.fecha desc`;
     return resultado;
 };
 
