@@ -98,7 +98,7 @@ app.get('/recibos/:id', (req, res) => {
     // let pedir = querys.query('pagos');
     let id_par = req.params.id;
     let tabla = 'pagos';
-    let columnapagos = 'idfactura';
+    let columnapagos = 'idcliente';
     let pedir = querys.queryWhere(tabla, columnapagos, id_par);
     mysql.conessionequery(pedir, (err, data) => {
         if (err) {
