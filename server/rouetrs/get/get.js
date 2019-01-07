@@ -70,13 +70,36 @@ app.get('/cliente/:id', (req, res) => {
 });
 
 // =============================
-// ruta get todos los pagos por factura
+// ruta get suma total  por factura
 // =============================
 app.get('/pagos/:id', (req, res) => {
     // let pedir = querys.query('pagos');
     let id_par = req.params.id;
     let columnapagos = 'cantidad';
-    let pedir = querys.querytotalPagos(id_par, cantidad);
+    let pedir = querys.querytotalPagos(id_par, columnapagos);
+    mysql.conessionequery(pedir, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+    });
+    console.log('todo bien');
+    console.log(mysql.stato());
+});
+
+// =============================
+// ruta get lista pagos por factura
+// =============================
+app.get('/recibos/:id', (req, res) => {
+    // let pedir = querys.query('pagos');
+    let id_par = req.params.id;
+    let tabla = 'pagos';
+    let columnapagos = 'idfactura';
+    let pedir = querys.queryWhere(tabla, columnapagos, id_par);
     mysql.conessionequery(pedir, (err, data) => {
         if (err) {
             console.log(err);

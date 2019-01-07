@@ -10,8 +10,8 @@ let querybuscar = (tabla, columna, termino) => {
 
 };
 
-let queryWhere = (tabla, indice, valorIndice) => {
-    let resultado = `select * from ${tabla} where ${indice}=${valorIndice} `;
+let queryWhere = (tabla, indicewhere, valorwhere) => {
+    let resultado = `select * from ${tabla} where ${indicewhere}=${valorwhere} `;
     return resultado;
 };
 
