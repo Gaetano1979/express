@@ -120,6 +120,8 @@ app.get('/recibos/:id', (req, res) => {
     });
     console.log('todo bien');
     console.log(mysql.stato());
+    console.log(pagos);
+
 });
 
 // =============================
