@@ -34,10 +34,6 @@ let queryventas = (idcliente) => {
     return resultado;
 };
 
-
-
-
-
 module.exports = {
     query,
     queryWhere,
