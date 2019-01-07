@@ -34,7 +34,7 @@ let queryventas = (idcliente) => {
     return resultado;
 };
 
-let querypagos
+
 
 
 
