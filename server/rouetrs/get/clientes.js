@@ -110,5 +110,28 @@ app.get('/facturas/:id', (req, res) => {
     console.log(mysql.stato());
 });
 
+// =============================
+// ruta get para buscar un cliente
+// =============================
+app.get('/buscar', (req, res) => {
+    // creamos una variable que lee los parametros por la req
+    let datos = req.headers;
+    // creamos la variable que deberia recibir 
+    let termino = datos.termino;
+
+    let peticion = querys.querybuscar('clientes', 'cliente', termino);
+
+    mysql.conessionequery(peticion, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+    });
+});
+
 
 module.exports = app;
