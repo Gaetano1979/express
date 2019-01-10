@@ -35,7 +35,7 @@ let stato = () => {
 
 let conessionequery = (query, callback) => {
     conessione.query(query, (err, resultado) => {
-        console.log(query);
+        // console.log(query);
         if (err) {
             console.log(err);
             return callback(err);
@@ -49,12 +49,6 @@ let conessionequery = (query, callback) => {
         }
     });
 };
-
-
-
-
-
-
 
 module.exports = {
     conessione,

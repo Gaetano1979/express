@@ -34,11 +34,18 @@ let queryventas = (idcliente) => {
     return resultado;
 };
 
+let tablas = () => {
+    let resultado = `show tables`;
+    return resultado;
+
+}
 module.exports = {
     query,
     queryWhere,
     queryJoin,
     querytotalPagos,
     querybuscar,
-    queryventas
+    queryventas,
+
+    tablas
 };

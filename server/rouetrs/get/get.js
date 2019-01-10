@@ -3,6 +3,7 @@
 // =============================
 const express = require('express');
 
+
 // =============================
 // importamos las config de Mysql
 // =============================
@@ -23,51 +24,10 @@ const app = express();
 // =============================
 const cors = require('cors');
 
+// =============================
+// utilizamos el cors
+// =============================
 app.use(cors());
-
-
-// apriamo la conessione
-mysql.conessioneaperte();
-
-// =============================
-// ruta get todos los clientes
-// =============================
-app.get('/clientes', (req, res) => {
-    let pedir = querys.query('clientes');
-    mysql.conessionequery(pedir, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.send(err);
-        } else {
-            res.json({
-                data
-            });
-        }
-    });
-    console.log('todo bien');
-    console.log(mysql.stato());
-});
-
-// =============================
-// ruta get todos los clientes por id
-// =============================
-app.get('/cliente/:id', (req, res) => {
-    let id_params = req.params.id;
-    let pedir = querys.queryventas(id_params);
-    mysql.conessionequery(pedir, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.send(err);
-        } else {
-            res.json({
-                data
-            });
-        }
-    });
-    // mysql.conessionechiusa();
-    console.log('todo bien');
-    console.log(mysql.stato());
-});
 
 // =============================
 // ruta get suma total  por factura
@@ -146,6 +106,8 @@ app.get('/buscar', (req, res) => {
         }
     });
 });
+
+
 
 
 
