@@ -23,6 +23,29 @@ const app = express();
 app.use(cors());
 
 
+// ==============================
+// rutas de todos los pagos
+// ==============================
+app.get('/pagos/clientes/:id', (req, res) => {
+    let id_cliente = req.params.id;
+    let tabla = 'pagos';
+    let indice = 'idcliente';
+    let pedir = querys.queryWhere(tabla, indice, id_cliente);
+    mysql.conessionequery(pedir, (err, data) => {
+        // console.log(data);
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json({
+                data
+            });
+        }
+
+    })
+});
+
+
 
 
 

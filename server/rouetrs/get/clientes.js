@@ -79,7 +79,7 @@ app.get('/cliente/:id', (req, res) => {
             res.send(err);
         } else {
             res.json({
-                data: data[0]
+                data
             });
         }
     });
