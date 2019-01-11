@@ -43,8 +43,8 @@ app.get('/tablas', (req, res) => {
                 tablas
             });
         }
-    })
-})
+    });
+});
 
 // ===============================
 // servicio get de cualquier tablas, solo especificar en parametro la tabla
