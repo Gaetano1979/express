@@ -55,25 +55,19 @@ app.get('/recibos/:id', (req, res) => {
     let columnapagos = 'idfactura';
     let pedir = querys.queryWhere(tabla, columnapagos, id_par);
     mysql.conessionequery(pedir, (err, data) => {
-        let pagos = 0;
-        for (let index = 0; index < data.length; index++) {
-            const element = data[index].cantidad;
-            console.log(element);
-            pagos = pagos + element;
-            console.log(pagos, 'pagamenti');
-        }
+
         if (err) {
             console.log(err);
             res.send(err);
         } else {
             res.json({
-                data,
-                pagos
+                data
+
             });
         }
     });
     console.log('todo bien');
-    console.log(mysql.stato());
+    // console.log(mysql.stato());
     // console.log(pagos);
 
 });
