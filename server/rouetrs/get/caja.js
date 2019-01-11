@@ -14,7 +14,7 @@ const mysql = require('../../../mysql/mysqlapp');
 // =============================
 const querys = require('../../../mysql/query');
 
-const Recibo = require('../../../models/recibos.js')
+const Recibo = require('../../../models/recibos.js');
 
 const app = express();
 // =============================
@@ -28,7 +28,7 @@ app.get('/caja/:documento', (req, res) => {
     let documento = req.params.documento;
     let tabla = req.body.tabla;
     let indiceWhere = req.body.indice;
-    let pedir = querys.queryWhere(tabla, indiceWhere, documento)
+    let pedir = querys.queryWhere(tabla, indiceWhere, documento);
     mysql.conessionequery(pedir, (err, data) => {
 
         if (err) {
@@ -69,7 +69,7 @@ app.post('/caja/:idfattura', (req, res) => {
     if (recibo.documento === 'FV.') {
         recibo.concepto = 'VENTA';
     } else {
-        recibo.concepto = 'pago a Cuenta'
+        recibo.concepto = 'pago a Cuenta';
     }
 
     let querypost = mysql.conessione.query(`INSERT INTO ${tabla} SET ?`, recibo, (error, results) => {
