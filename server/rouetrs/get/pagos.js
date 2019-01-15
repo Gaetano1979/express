@@ -14,7 +14,7 @@ const mysql = require('../../../mysql/mysqlapp');
 // =============================
 const querys = require('../../../mysql/query');
 
-const Recibo = require('../../../models/recibos.js');
+// const Recibo = require('../../../models/recibos.js');
 
 const app = express();
 // =============================

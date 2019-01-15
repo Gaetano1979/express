@@ -20,9 +20,9 @@ mysql.conessioneaperte();
 // app.use(require('./get/get.js'));
 app.use(require('./get/clientes.js'));
 app.use(require('./get/caja.js'));
-app.use(require('./get/pagos'));
-
-
+app.use(require('./get/pagos.js'));
+app.use(require('./post/caja.js'));
+app.use(require('./provas/provasGet.js'));
 
 
 module.exports = app;

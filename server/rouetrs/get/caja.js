@@ -14,7 +14,7 @@ const mysql = require('../../../mysql/mysqlapp');
 // =============================
 const querys = require('../../../mysql/query');
 
-const Recibo = require('../../../models/recibos.js');
+// const Recibo = require('../../../models/recibos.js');
 
 const app = express();
 // =============================
@@ -44,49 +44,6 @@ app.get('/caja/:documento', (req, res) => {
 });
 
 
-//metodos post
-app.post('/caja/:idfattura', (req, res) => {
-    let idfatura = req.params.idfattura;
-
-    let peticion = req.body;
-    let fecha = new Date();
-    let tabla = 'caja';
-    let recibo = {
-        documento: peticion.ndoc,
-        fecha,
-        // concepto: peticion.concepto,
-        entrada: peticion.entrada,
-        salida: peticion.salida,
-        moneda: "S/.",
-        turno: 1,
-        local: 1,
-        num_caja: 1,
-        usuario: peticion.usuario,
-        destino_origen: peticion.destino,
-        tarjeta: peticion.tarjeta,
-        ref_tarjeta: peticion.ref
-    };
-    if (recibo.documento === 'FV.') {
-        recibo.concepto = 'VENTA';
-    } else {
-        recibo.concepto = 'pago a Cuenta';
-    }
-
-    let querypost = mysql.conessione.query(`INSERT INTO ${tabla} SET ?`, recibo, (error, results) => {
-        if (error) {
-            console.log(error.sqlMessage);
-
-        } else {
-            res.json({
-                id_caja: results.insertId,
-                riga_inserita: results.affectedRows
-            });
-        }
-
-        console.log('id caja', Number(results.insertId));
-    });
-    console.log(querypost.sql);
-});
 
 
 

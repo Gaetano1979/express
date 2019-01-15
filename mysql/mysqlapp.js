@@ -37,7 +37,7 @@ let conessionequery = (query, callback) => {
     conessione.query(query, (err, resultado) => {
         // console.log(query);
         if (err) {
-            console.log(err);
+            // console.log(err);
             return callback(err);
         }
         if (resultado.length === 0) {
@@ -50,10 +50,26 @@ let conessionequery = (query, callback) => {
     });
 };
 
+let getfacturas = (query, callback) => {
+    conessione.query(query, (err, factura) => {
+        if (err) {
+            return callback(err);
+        }
+        if (factura.length === 0) {
+            return callback('No hay registros');
+        } else {
+            return callback(null, factura);
+        }
+    });
+};
+
+
+
 module.exports = {
     conessione,
     conessionechiusa,
     conessioneaperte,
     conessionequery,
+    getfacturas,
     stato
 };
