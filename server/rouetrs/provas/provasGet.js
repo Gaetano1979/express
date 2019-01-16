@@ -48,14 +48,14 @@ app.get('/prova/prova/:id', (req, res, next) => {
 });
 app.get('/proviamo/dos/:id', (req, res) => {
     let id = req.params.id;
-    proviamoQuery(id, (err, respuesta) => {
+    proviamoQuery(id, (err, data) => {
         if (err) {
             res.json({
                 err
             });
         } else {
             res.json({
-                respuesta
+                data
             });
         }
     });
@@ -110,19 +110,22 @@ let provaFor = (arreglo1, arreglo2, callback) => {
         // console.log('========todos los pagos=====', recibos);
         // console.log('=====pagamenti=======', pagamenti);
         // console.log('=====totale factura======', element.total);
+        // console.log('Saldo' + (element.total - pagamenti));
+
         let documento = {
             Recibos: recibos,
             Cancelado: pagamenti,
-            Total: element.total
+            Total: element.total,
+
         };
         return callback(null, documento);
 
     });
 };
-provaFor(prova, prova2, (err, resultado) => {
-    console.log(resultado, 'resultado');
+// provaFor(prova, prova2, (err, resultado) => {
+//     console.log(resultado, 'resultado');
 
-});
+// });
 
 let proviamoQuery = (id, callback) => {
 
@@ -145,18 +148,24 @@ let proviamoQuery = (id, callback) => {
                         if (pagos.idfactura === element.idfactura) {
                             pagamenti += pagos.cantidad;
                             let ob = {
-                                pago: pagos.cantidad
+                                pago: pagos.cantidad,
+                                resposable: pagos.responsable,
+                                fecha: pagos.fecha_pag,
+                                recibo: pagos.documento
                             };
                             recibos.push(ob);
                         }
                     });
                     Doc = {
+                        Id_Factura: element.idfactura,
+                        Fecha_factura: element.fecha,
                         Recibos: recibos,
                         Cancelado: pagamenti,
-                        Total_Factura: element.total
+                        Total_Factura: element.total,
+                        Saldo: (element.total - pagamenti)
                     }
 
-                    arrDoc.push(Doc)
+                    arrDoc.push(Doc);
 
 
 
@@ -174,17 +183,17 @@ let proviamoQuery = (id, callback) => {
 
 
 };
-proviamoQuery(6, (err, resultado) => {
-    if (err) {
-        console.log(err);
+// proviamoQuery(6, (err, resultado) => {
+//     if (err) {
+//         console.log(err);
 
-    } else {
-        console.log(resultado, 'resultado');
+//     } else {
+//         console.log(resultado, 'resultado');
 
-    }
+//     }
 
 
-});
+// });
 
 
 
