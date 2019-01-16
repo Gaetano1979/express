@@ -158,6 +158,8 @@ let proviamoQuery = (id, callback) => {
                     });
                     Doc = {
                         Id_Factura: element.idfactura,
+                        Tipo: element.tipodoc,
+                        Documento: element.documento,
                         Fecha_factura: element.fecha,
                         Recibos: recibos,
                         Cancelado: pagamenti,
